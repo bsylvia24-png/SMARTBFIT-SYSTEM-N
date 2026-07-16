@@ -100,3 +100,44 @@ footer {
     margin: 20px auto;
     text-align: center;
 }
+/* Features Section */
+
+#features {
+    background-color: #f8f8f8;
+    padding: 70px 40px;
+}
+
+#features h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.feature-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.feature-card {
+    background: white;
+    width: 300px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+}
+
+.feature-card h3 {
+    color: #6b2d5c;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    line-height: 1.6;
+}

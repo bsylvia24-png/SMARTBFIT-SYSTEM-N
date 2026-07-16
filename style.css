@@ -141,3 +141,36 @@ footer {
 .feature-card p {
     line-height: 1.6;
 }
+<section id="fitfinder">
+
+    <h2>Fit Finder</h2>
+
+    <p>Enter your body measurements to receive a personalized clothing size recommendation.</p>
+
+    <form id="fitForm">
+
+        <input type="number" id="height" placeholder="Height (cm)" required>
+
+        <input type="number" id="weight" placeholder="Weight (kg)" required>
+
+        <input type="number" id="bust" placeholder="Bust (cm)" required>
+
+        <input type="number" id="waist" placeholder="Waist (cm)" required>
+
+        <input type="number" id="hips" placeholder="Hips (cm)" required>
+
+        <select id="fabric">
+            <option value="">Select Fabric Type</option>
+            <option>Cotton</option>
+            <option>Denim</option>
+            <option>Stretch Fabric</option>
+            <option>Non-Stretch Fabric</option>
+        </select>
+
+        <button type="submit">Find My Size</button>
+
+    </form>
+
+    <h3 id="result"></h3>
+
+</section>

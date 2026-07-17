@@ -1,188 +1,637 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Fit System</title>
-
-    <!-- Link CSS -->
+    <title>Smart Fit System - Find Your Perfect Fit</title>
+    
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="logo">
+                <h2><i class="fas fa-tshirt"></i> Smart Fit System</h2>
+                <p>Find Your Perfect Fit</p>
+            </div>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#fitfinder">Fit Finder</a></li>
+                <li><a href="#marketplace">Marketplace</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#tracking">Tracking</a></li>
+                <li class="auth-links">
+                    <a href="#login" id="loginLink"><i class="fas fa-sign-in-alt"></i> Login</a>
+                    <a href="#signup" id="signupLink"><i class="fas fa-user-plus"></i> Sign Up</a>
+                </li>
+                <li class="user-profile" style="display:none;">
+                    <a href="#profile" id="profileLink"><i class="fas fa-user-circle"></i> <span id="userNameDisplay">User</span></a>
+                    <a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+            
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<header>
-    <nav class="navbar">
-
-        <div class="logo">
-            <h2> Smart Fit System</h2>
-            <p>Find Your Perfect Fit</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <i class="fas fa-check-circle"></i> AI-Powered Sizing
+                </div>
+                <h1>Find Your <span>Perfect</span> Fit</h1>
+                <p>Smart Fit System helps customers discover the correct clothing size using their body measurements while connecting them to verified fashion vendors.</p>
+                <div class="hero-buttons">
+                    <a href="#fitfinder" class="btn btn-primary">
+                        <i class="fas fa-ruler-combined"></i> Try Fit Finder
+                    </a>
+                    <a href="#marketplace" class="btn btn-secondary">
+                        <i class="fas fa-store"></i> Explore Marketplace
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">10K+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Verified Vendors</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Fit Accuracy</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" alt="Fashion Shopping">
+                <div class="floating-card card1">
+                    <i class="fas fa-tshirt"></i>
+                    <span>Perfect Fit</span>
+                </div>
+                <div class="floating-card card2">
+                    <i class="fas fa-star"></i>
+                    <span>4.9 Rating</span>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <ul class="nav-links">
-            <li><a href="#hero">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#fitfinder">Fit Finder</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#marketplace">Marketplace</a></li>
-            <li><a href="#login">Login</a></li>
-            <li><a href="#signup">Sign Up</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-</ul>
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-header">
+            <span class="section-tag">About Us</span>
+            <h2>Revolutionizing <span>Online Shopping</span></h2>
+            <p>Smart Fit System is an intelligent online clothing fit recommendation platform that reduces size mismatches and improves confidence in online shopping.</p>
+        </div>
+        <div class="about-grid">
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h3>AI-Powered Technology</h3>
+                <p>Our advanced algorithms analyze your measurements to recommend the perfect size across different brands.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Verified Vendors</h3>
+                <p>All vendors on our platform are thoroughly verified to ensure quality and authenticity of products.</p>
+            </div>
+            <div class="about-card">
+                <div class="about-icon">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+                <h3>Easy Returns</h3>
+                <p>If the fit isn't perfect, our hassle-free return policy ensures you get exactly what you need.</p>
+            </div>
+        </div>
+    </section>
 
-<section id="hero">
+    <!-- Fit Finder Section -->
+    <section id="fitfinder" class="fit-finder">
+        <div class="section-header">
+            <span class="section-tag">Fit Finder</span>
+            <h2>Find Your <span>Perfect Size</span></h2>
+            <p>Enter your body measurements to get personalized size recommendations</p>
+        </div>
+        
+        <div class="fit-finder-container">
+            <div class="measurement-form">
+                <div class="form-group">
+                    <label for="measurementSystem">
+                        <i class="fas fa-ruler"></i> Measurement System
+                    </label>
+                    <select id="measurementSystem" class="form-control">
+                        <option value="metric">Metric (cm/kg)</option>
+                        <option value="imperial">Imperial (in/lbs)</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gender">
+                            <i class="fas fa-venus-mars"></i> Gender
+                        </label>
+                        <select id="gender" class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">
+                            <i class="fas fa-calendar-alt"></i> Age
+                        </label>
+                        <input type="number" id="age" class="form-control" placeholder="25" min="10" max="100">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="height">
+                        <i class="fas fa-arrow-up"></i> Height
+                    </label>
+                    <div class="input-group">
+                        <input type="number" id="height" class="form-control" placeholder="175" step="0.5">
+                        <span class="input-suffix" id="heightUnit">cm</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="weight">
+                        <i class="fas fa-weight"></i> Weight
+                    </label>
+                    <div class="input-group">
+                        <input type="number" id="weight" class="form-control" placeholder="70" step="0.5">
+                        <span class="input-suffix" id="weightUnit">kg</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="bodyType">
+                        <i class="fas fa-user"></i> Body Type
+                    </label>
+                    <select id="bodyType" class="form-control">
+                        <option value="slim">Slim</option>
+                        <option value="athletic">Athletic</option>
+                        <option value="average">Average</option>
+                        <option value="curvy">Curvy</option>
+                        <option value="plus">Plus Size</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label><i class="fas fa-arrows-alt-h"></i> Body Measurements</label>
+                    <div class="measurement-grid">
+                        <div class="measurement-item">
+                            <label for="chest">Chest/Bust (cm)</label>
+                            <input type="number" id="chest" class="form-control" placeholder="95" step="0.5">
+                        </div>
+                        <div class="measurement-item">
+                            <label for="waist">Waist (cm)</label>
+                            <input type="number" id="waist" class="form-control" placeholder="80" step="0.5">
+                        </div>
+                        <div class="measurement-item">
+                            <label for="hips">Hips (cm)</label>
+                            <input type="number" id="hips" class="form-control" placeholder="100" step="0.5">
+                        </div>
+                        <div class="measurement-item">
+                            <label for="inseam">Inseam (cm)</label>
+                            <input type="number" id="inseam" class="form-control" placeholder="78" step="0.5">
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="getFitRecommendation" class="btn btn-primary btn-full">
+                    <i class="fas fa-magic"></i> Get Your Perfect Fit
+                </button>
+            </div>
+            
+            <div class="fit-results" id="fitResults" style="display:none;">
+                <div class="result-card">
+                    <h3><i class="fas fa-check-circle"></i> Your Recommended Sizes</h3>
+                    <div class="size-chart">
+                        <div class="size-item">
+                            <span class="size-label">Tops</span>
+                            <span class="size-value" id="topSize">M</span>
+                            <span class="size-confidence">95%</span>
+                        </div>
+                        <div class="size-item">
+                            <span class="size-label">Bottoms</span>
+                            <span class="size-value" id="bottomSize">32</span>
+                            <span class="size-confidence">92%</span>
+                        </div>
+                        <div class="size-item">
+                            <span class="size-label">Dresses</span>
+                            <span class="size-value" id="dressSize">M</span>
+                            <span class="size-confidence">90%</span>
+                        </div>
+                        <div class="size-item">
+                            <span class="size-label">Shoes</span>
+                            <span class="size-value" id="shoeSize">42</span>
+                            <span class="size-confidence">88%</span>
+                        </div>
+                    </div>
+                    <div class="body-type-result">
+                        <span>Body Type: </span>
+                        <strong id="bodyTypeResult">Athletic</strong>
+                    </div>
+                    <div class="fit-advice" id="fitAdvice">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>You have an athletic body type. Consider fitting clothes that accentuate your shoulders.</span>
+                    </div>
+                    <button class="btn btn-secondary btn-full" id="saveFitResult">
+                        <i class="fas fa-save"></i> Save to My Wardrobe
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="hero-text">
+    <!-- Marketplace Section -->
+    <section id="marketplace">
+        <div class="section-header">
+            <span class="section-tag">Marketplace</span>
+            <h2>Shop <span>Verified Fashion</span></h2>
+            <p>Discover quality fashion from trusted vendors</p>
+        </div>
+        
+        <div class="marketplace-filters">
+            <div class="filter-group">
+                <select id="categoryFilter" class="form-control">
+                    <option value="all">All Categories</option>
+                    <option value="dresses">Dresses</option>
+                    <option value="tops">Tops</option>
+                    <option value="bottoms">Bottoms</option>
+                    <option value="shoes">Shoes</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="vendorFilter" class="form-control">
+                    <option value="all">All Vendors</option>
+                    <option value="verified">Verified Only</option>
+                    <option value="top-rated">Top Rated</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select id="sortFilter" class="form-control">
+                    <option value="popular">Most Popular</option>
+                    <option value="newest">Newest</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="products-grid" id="productsGrid">
+            <!-- Products will be rendered by JavaScript -->
+        </div>
+        
+        <div class="view-all">
+            <button class="btn btn-secondary" id="viewAllProducts">
+                <i class="fas fa-arrow-right"></i> View All Products
+            </button>
+        </div>
+    </section>
 
-<h1>Find Your Perfect Fit</h1>
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-header">
+            <span class="section-tag">Features</span>
+            <h2>Why Choose <span>Smart Fit?</span></h2>
+            <p>Experience the future of online shopping with our innovative features</p>
+        </div>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>AI-Powered Fit</h3>
+                <p>Our advanced AI analyzes your measurements and past purchases to recommend the perfect size every time.</p>
+                <div class="feature-tag">New</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-store"></i>
+                </div>
+                <h3>Verified Sellers</h3>
+                <p>All vendors are thoroughly vetted and verified to ensure product quality and authenticity.</p>
+                <div class="feature-tag">Trusted</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-truck"></i>
+                </div>
+                <h3>Order Tracking</h3>
+                <p>Real-time tracking of your orders with instant notifications at every step of the delivery process.</p>
+                <div class="feature-tag">Live</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-undo-alt"></i>
+                </div>
+                <h3>Easy Returns</h3>
+                <p>Free returns within 30 days if the fit isn't perfect. Hassle-free exchange process.</p>
+                <div class="feature-tag">30 Days</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Virtual Wardrobe</h3>
+                <p>Build and organize your digital wardrobe. Get outfit suggestions based on your saved items.</p>
+                <div class="feature-tag">Smart</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Fit History</h3>
+                <p>Track your measurements and fit preferences over time to perfect your style choices.</p>
+                <div class="feature-tag">Track</div>
+            </div>
+        </div>
+    </section>
 
-<p>
-Get personalized clothing recommendations using your body measurements.
-Shop confidently from verified fashion vendors.
-</p>
+    <!-- Tracking Section -->
+    <section id="tracking">
+        <div class="section-header">
+            <span class="section-tag">Order Tracking</span>
+            <h2>Track Your <span>Orders</span></h2>
+            <p>Stay updated on your order status in real-time</p>
+        </div>
+        
+        <div class="tracking-container">
+            <div class="tracking-input">
+                <div class="input-group">
+                    <input type="text" id="orderNumber" class="form-control" placeholder="Enter Order Number (e.g., SF-2024-001)">
+                    <button id="trackOrder" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Track
+                    </button>
+                </div>
+            </div>
+            
+            <div id="trackingResult" style="display:none;" class="tracking-result">
+                <div class="order-header">
+                    <div>
+                        <span class="order-number">Order #<span id="trackedOrderNumber">SF-2024-001</span></span>
+                        <span class="order-date">Placed on <span id="orderDate">July 17, 2026</span></span>
+                    </div>
+                    <span class="order-status" id="orderStatus">In Transit</span>
+                </div>
+                
+                <div class="tracking-progress">
+                    <div class="progress-step active">
+                        <div class="step-icon"><i class="fas fa-check"></i></div>
+                        <div class="step-content">
+                            <h4>Order Confirmed</h4>
+                            <p>Your order has been confirmed</p>
+                            <span class="step-time">July 17, 2026 09:30 AM</span>
+                        </div>
+                    </div>
+                    <div class="progress-step active">
+                        <div class="step-icon"><i class="fas fa-check"></i></div>
+                        <div class="step-content">
+                            <h4>Processing</h4>
+                            <p>Your order is being prepared</p>
+                            <span class="step-time">July 17, 2026 11:45 AM</span>
+                        </div>
+                    </div>
+                    <div class="progress-step active">
+                        <div class="step-icon"><i class="fas fa-truck"></i></div>
+                        <div class="step-content">
+                            <h4>In Transit</h4>
+                            <p>Your order is on its way</p>
+                            <span class="step-time">July 18, 2026 08:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="step-content">
+                            <h4>Delivered</h4>
+                            <p>Your order has been delivered</p>
+                            <span class="step-time">Expected: July 20, 2026</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="order-details">
+                    <h4>Order Details</h4>
+                    <div class="order-items">
+                        <div class="order-item">
+                            <span class="item-name">Product Name</span>
+                            <span class="item-qty">Qty: 1</span>
+                            <span class="item-price">$49.99</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<a href="#fitfinder" class="btn">
-Try Fit Finder
-</a>
+    <!-- Login Section -->
+    <section id="login" class="auth-section">
+        <div class="auth-container">
+            <div class="form-box login-box">
+                <div class="form-header">
+                    <i class="fas fa-user-circle"></i>
+                    <h2>Welcome Back</h2>
+                    <p>Login to your Smart Fit account</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                            <span class="toggle-password" onclick="togglePassword('loginPassword')">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="rememberMe"> Remember Me
+                        </label>
+                        <a href="#" class="forgot-link">Forgot Password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    
+                    <p class="form-footer">
+                        Don't have an account? <a href="#signup" class="switch-auth">Sign Up</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
 
-</div>
+    <!-- Signup Section -->
+    <section id="signup" class="auth-section">
+        <div class="auth-container">
+            <div class="form-box signup-box">
+                <div class="form-header">
+                    <i class="fas fa-user-plus"></i>
+                    <h2>Create Account</h2>
+                    <p>Join the Smart Fit community today</p>
+                </div>
+                
+                <form id="signupForm">
+                    <div class="form-group">
+                        <label for="signupName">
+                            <i class="fas fa-user"></i> Full Name
+                        </label>
+                        <input type="text" id="signupName" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupEmail">
+                            <i class="fas fa-envelope"></i> Email Address
+                        </label>
+                        <input type="email" id="signupEmail" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupPassword">
+                            <i class="fas fa-lock"></i> Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="signupPassword" class="form-control" placeholder="Create a password" required>
+                            <span class="toggle-password" onclick="togglePassword('signupPassword')">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <span class="strength-bar"></span>
+                            <span class="strength-text">Weak</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="signupConfirmPassword">
+                            <i class="fas fa-check-circle"></i> Confirm Password
+                        </label>
+                        <div class="password-input">
+                            <input type="password" id="signupConfirmPassword" class="form-control" placeholder="Confirm your password" required>
+                            <span class="toggle-password" onclick="togglePassword('signupConfirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="termsCheck" required>
+                            I agree to the <a href="#" class="terms-link">Terms of Service</a> and <a href="#" class="terms-link">Privacy Policy</a>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-full">
+                        <i class="fas fa-user-plus"></i> Create Account
+                    </button>
+                    
+                    <p class="form-footer">
+                        Already have an account? <a href="#login" class="switch-auth">Login</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
 
-</section>
+    <!-- Contact/Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-logo">
+                    <h2><i class="fas fa-tshirt"></i> Smart Fit System</h2>
+                    <p>Find Your Perfect Fit</p>
+                </div>
+                <p class="footer-description">Revolutionizing online shopping with AI-powered size recommendations and verified vendors.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#fitfinder">Fit Finder</a></li>
+                    <li><a href="#marketplace">Marketplace</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#tracking">Order Tracking</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Returns Policy</a></li>
+                    <li><a href="#">Shipping Info</a></li>
+                    <li><a href="#">Report Issue</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-envelope"></i> info@smartfitsystem.com</p>
+                <p><i class="fas fa-phone"></i> +254 700 123456</p>
+                <p><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                <div class="newsletter">
+                    <h4>Subscribe to our newsletter</h4>
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Smart Fit System. All rights reserved.</p>
+            <p class="footer-credits">Made with <i class="fas fa-heart"></i> in Kenya</p>
+        </div>
+    </footer>
 
-<<section id="features">
-
-<h2>Why Choose Smart Fit System?</h2>
-
-<div class="feature-container">
-
-<div class="feature-box">
-<h3>📏 Fit Finder</h3>
-<p>Personalized size recommendations using your body measurements.</p>
-</div>
-
-<div class="feature-box">
-<h3>🛍 Marketplace</h3>
-<p>Purchase from trusted and verified clothing vendors.</p>
-</div>
-
-<div class="feature-box">
-<h3>🚚 Order Tracking</h3>
-<p>Track your order from purchase to delivery.</p>
-</div>
-
-<div class="feature-box">
-<h3>🔒 Secure Platform</h3>
-<p>Your measurements and personal information remain protected.</p>
-</div>
-
-</div>
-<section id="marketplace">
-
-<h2>Trending Collection</h2>
-
-<div class="products">
-
-<div class="product">
-<h3>Denim Jacket</h3>
-<p>KSh 4,500</p>
-<button>View</button>
-</div>
-
-<div class="product">
-<h3>High Waist Jeans</h3>
-<p>KSh 3,800</p>
-<button>View</button>
-</div>
-
-<div class="product">
-<h3>Denim Dress</h3>
-<p>KSh 5,200</p>
-<button>View</button>
-</div>
-
-</div>
-
-</section>
-
-</section>
-<section id="fitfinder">
-
-    <h2>Fit Finder</h2>
-
-    <p>Enter your body measurements to receive a personalized clothing size recommendation.</p>
-
-    <form id="fitForm">
-
-        <input type="number" id="height" placeholder="Height (cm)" required>
-
-        <input type="number" id="weight" placeholder="Weight (kg)" required>
-
-        <input type="number" id="bust" placeholder="Bust (cm)" required>
-
-        <input type="number" id="waist" placeholder="Waist (cm)" required>
-
-        <input type="number" id="hips" placeholder="Hips (cm)" required>
-
-        <select id="fabric">
-            <option value="">Select Fabric Type</option>
-            <option>Cotton</option>
-            <option>Denim</option>
-            <option>Stretch Fabric</option>
-            <option>Non-Stretch Fabric</option>
-        </select>
-
-        <button type="submit">Find My Size</button>
-
-    </form>
-
-    <h3 id="result"></h3>
-
-</section>
-</section>
-
-<section id="timeline">
-    <h2>Project Timeline</h2>
-</section>
-
-<section id="budget">
-    <h2>Estimated Budget</h2>
-</section>
-<section id="login">
-    <h2>Login</h2>
-
-    <form>
-        <input type="email" placeholder="Email Address" required>
-        <input type="password" placeholder="Password" required>
-
-        <button type="submit">Login</button>
-    </form>
-</section>
-<section id="signup">
-    <h2>Create an Account</h2>
-
-    <form>
-        <input type="text" placeholder="Full Name" required>
-        <input type="email" placeholder="Email Address" required>
-        <input type="password" placeholder="Password" required>
-        <input type="password" placeholder="Confirm Password" required>
-
-        <button type="submit">Create Account</button>
-    </form>
-</section>
-
-<section id="contact">
-    <h2>Contact</h2>
-</section>
-
-<footer>
-    <p>&copy; 2026 Brenda Achieng Odhiambo</p>
-</footer>
-
-<!-- Link JavaScript -->
-<script src="script.js"></script>
-
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 </body>
 </html>

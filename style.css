@@ -1,176 +1,55 @@
-/* Reset default browser spacing */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.marketplace{
+    padding:80px 10%;
+    background:#f9f9f9;
 }
 
-/* Body styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+.marketplace h2{
+    text-align:center;
+    margin-bottom:10px;
+    color:#5b2245;
 }
 
-/* Navigation Bar */
-header {
-    background-color: #6b2d5c;
-    padding: 15px 40px;
+.marketplace p{
+    text-align:center;
+    margin-bottom:40px;
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.market-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
 }
 
-nav h2 {
-    color: white;
+.product-card{
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    text-align:center;
+    padding-bottom:20px;
 }
 
-nav ul {
-    display: flex;
-    list-style: none;
+.product-card img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
 }
 
-nav ul li {
-    margin-left: 25px;
+.product-card h3{
+    margin-top:15px;
+    color:#5b2245;
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+.product-card button{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    background:#6d2d57;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
 }
 
-nav ul li a:hover {
-    color: #ffd166;
-}sgi
-
-/* Hero Section */
-#hero {
-    text-align: center;
-    padding: 80px 20px;
-    background-color: white;
+.product-card button:hover{
+    background:#8b3d6f;
 }
-
-#hero h1 {
-    font-size: 42px;
-    margin-bottom: 15px;
-}
-
-#hero p {
-    font-size: 20px;
-    color: #666;
-}
-
-/* General Sections */
-section {
-    padding: 50px 20px;
-}
-
-h2 {
-    margin-bottom: 20px;
-    color: #6b2d5c;
-}
-
-/* Footer */
-footer {
-    background-color: #6b2d5c;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-/* About Section */
-
-#about {
-    background-color: white;
-    padding: 70px 80px;
-}
-
-#about h2 {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-#about p {
-    font-size: 18px;
-    line-height: 1.8;
-    max-width: 900px;
-    margin: 20px auto;
-    text-align: center;
-}
-/* Features Section */
-
-#features {
-    background-color: #f8f8f8;
-    padding: 70px 40px;
-}
-
-#features h2 {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.feature-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
-}
-
-.feature-card {
-    background: white;
-    width: 300px;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.feature-card:hover {
-    transform: translateY(-8px);
-}
-
-.feature-card h3 {
-    color: #6b2d5c;
-    margin-bottom: 15px;
-}
-
-.feature-card p {
-    line-height: 1.6;
-}
-<section id="fitfinder">
-
-    <h2>Fit Finder</h2>
-
-    <p>Enter your body measurements to receive a personalized clothing size recommendation.</p>
-
-    <form id="fitForm">
-
-        <input type="number" id="height" placeholder="Height (cm)" required>
-
-        <input type="number" id="weight" placeholder="Weight (kg)" required>
-
-        <input type="number" id="bust" placeholder="Bust (cm)" required>
-
-        <input type="number" id="waist" placeholder="Waist (cm)" required>
-
-        <input type="number" id="hips" placeholder="Hips (cm)" required>
-
-        <select id="fabric">
-            <option value="">Select Fabric Type</option>
-            <option>Cotton</option>
-            <option>Denim</option>
-            <option>Stretch Fabric</option>
-            <option>Non-Stretch Fabric</option>
-        </select>
-
-        <button type="submit">Find My Size</button>
-
-    </form>
-
-    <h3 id="result"></h3>
-
-</section>

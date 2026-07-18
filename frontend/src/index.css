@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-luxury-dark: #2E1F16;
+  --color-luxury-medium: #4A2C2A;
+  --color-luxury-brand: #8B5E3C;
+  --color-luxury-light: #C4A484;
+  --color-luxury-cream: #F5F1EB;
+}
+
+@layer base {
+  body {
+    @apply bg-luxury-cream text-luxury-dark font-sans selection:bg-luxury-light selection:text-luxury-dark;
+  }
+}
+
+.luxury-glass {
+  background: rgba(245, 241, 235, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(204, 164, 132, 0.2);
+}
+
+.luxury-card {
+  @apply bg-white border border-[#ebdccb] rounded-xl shadow-sm hover:shadow-md transition-all duration-300;
+}
+
+.luxury-input {
+  @apply w-full px-4 py-2 bg-[#fcfbfa] border border-[#ebdccb] rounded-lg focus:outline-none focus:ring-2 focus:ring-luxury-brand focus:border-transparent transition-all;
+}
+
+.luxury-btn-primary {
+  @apply px-6 py-3 bg-luxury-dark text-white font-semibold rounded-lg hover:bg-luxury-medium active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg inline-flex items-center justify-center gap-2;
+}
+
+.luxury-btn-secondary {
+  @apply px-6 py-3 bg-[#e8dac7] text-luxury-dark font-semibold rounded-lg hover:bg-[#dbccb7] active:scale-95 transition-all duration-200 border border-[#d6c4ad] inline-flex items-center justify-center gap-2;
+}
+
+.luxury-btn-brand {
+  @apply px-6 py-3 bg-luxury-brand text-white font-semibold rounded-lg hover:bg-[#785133] active:scale-95 transition-all duration-200 shadow-md hover:shadow-lg inline-flex items-center justify-center gap-2;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F1EB;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4A484;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8B5E3C;
+}

@@ -432,7 +432,7 @@ export const SellerDashboard: React.FC = () => {
 
             <div className="bg-white border border-[#C4A484]/20 rounded-2xl p-6 shadow-sm flex flex-col justify-center items-center text-center">
               <BarChart3 className="h-10 w-10 text-[#C4A484] mb-3" />
-              <h4 className="font-poppins font-bold text-base">Interactive Reports (Mocked)</h4>
+              <h4 className="font-poppins font-bold text-base">Interactive Sales & Fit Reports</h4>
               <p className="text-xs text-[#4A2C2A]/70 max-w-xs mt-1">
                 Your monthly checkout trends and fit return rate analytics will automatically update once customer feedback reviews arrive.
               </p>

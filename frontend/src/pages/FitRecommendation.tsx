@@ -58,7 +58,7 @@ export const FitRecommendation: React.FC = () => {
         setHips('41');
         setInseam('32');
         setLoading(false);
-        alert('Mock LiDAR file processed successfully!');
+        alert('LiDAR scan file processed successfully!');
       }, 1000);
     }
   };

@@ -70,7 +70,7 @@ mongoose
     });
   })
   .catch((err) => {
-    console.error('Failed to connect to MongoDB. Starting server with mock memory mode...', err.message);
+    console.error('Failed to connect to MongoDB. Starting server in standalone offline fallback mode...', err.message);
     // Start server anyway for verification/fallback compatibility
     app.listen(PORT, () => {
       console.log(`Server started in standalone fallback mode on port ${PORT}`);

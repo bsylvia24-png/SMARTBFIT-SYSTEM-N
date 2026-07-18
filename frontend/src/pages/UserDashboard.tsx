@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import { User, Ruler, ClipboardList, Heart, Bell, Settings, LogOut, CheckCircle } from 'lucide-react';
+import { ProductCard } from '../components/ProductCard';
 
 export const UserDashboard: React.FC = () => {
   const { token, user, logout } = useAuth();
@@ -46,7 +47,7 @@ export const UserDashboard: React.FC = () => {
         const res = await axios.get('http://localhost:5000/api/wishlist', {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setWishlist(res.data.products || []);
+        setWishlist(res.data || []);
       } else if (activeTab === 'notifications') {
         const res = await axios.get('http://localhost:5000/api/notifications', {
           headers: { Authorization: `Bearer ${token}` }
@@ -273,8 +274,10 @@ export const UserDashboard: React.FC = () => {
               {wishlist.length === 0 ? (
                 <p className="text-sm text-[#4A2C2A]/60">Your wishlist is currently empty.</p>
               ) : (
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* Mock wishlist items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  {wishlist.map((product) => (
+                    <ProductCard key={product._id} product={product} />
+                  ))}
                 </div>
               )}
             </div>

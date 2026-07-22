@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
-import { Users, Store, Shirt, ClipboardList } from 'lucide-react';
+import { Users, Store, Shirt, ClipboardList, Ruler } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
   const { token } = useAuth();
-  const [activeTab, setActiveTab] = useState<'users' | 'sellers' | 'products' | 'orders'>('users');
+  const [activeTab, setActiveTab] = useState<'users' | 'sellers' | 'products' | 'orders' | 'measurements'>('users');
   
   const [users, setUsers] = useState<any[]>([]);
   const [sellers, setSellers] = useState<any[]>([]);
   const [products, setProducts] = useState<any[]>([]);
   const [orders, setOrders] = useState<any[]>([]);
+  const [measurements, setMeasurements] = useState<any[]>([]);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -23,23 +24,15 @@ export const AdminDashboard: React.FC = () => {
     setLoading(true);
     try {
       if (activeTab === 'users') {
-        // Mock fetch users / sellers for standalone backend limits
-        const res = await axios.get('http://localhost:5000/api/auth/profile', {
+        const res = await axios.get('http://localhost:5000/api/admin/users', {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setUsers([res.data.user]); 
+        setUsers(res.data); 
       } else if (activeTab === 'sellers') {
-        const res = await axios.get('http://localhost:5000/api/products');
-        // Extract unique sellers from populated products
-        const uniqueSellers: any[] = [];
-        res.data.forEach((p: any) => {
-          if (p.sellerId && typeof p.sellerId === 'object') {
-            if (!uniqueSellers.find(s => s._id === p.sellerId._id)) {
-              uniqueSellers.push(p.sellerId);
-            }
-          }
+        const res = await axios.get('http://localhost:5000/api/admin/sellers', {
+          headers: { Authorization: `Bearer ${token}` }
         });
-        setSellers(uniqueSellers);
+        setSellers(res.data);
       } else if (activeTab === 'products') {
         const res = await axios.get('http://localhost:5000/api/products');
         setProducts(res.data);
@@ -48,6 +41,11 @@ export const AdminDashboard: React.FC = () => {
           headers: { Authorization: `Bearer ${token}` }
         });
         setOrders(res.data);
+      } else if (activeTab === 'measurements') {
+        const res = await axios.get('http://localhost:5000/api/admin/measurements', {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        setMeasurements(res.data);
       }
     } catch (err) {
       console.error(err);
@@ -56,10 +54,18 @@ export const AdminDashboard: React.FC = () => {
     }
   };
 
-  const handleToggleVerify = async (_sellerId: string, currentStatus: boolean) => {
-    // Optional backend toggle or mocked confirmation
-    alert(`Boutique verification status toggled to: ${!currentStatus ? 'VERIFIED' : 'UNVERIFIED'}`);
-    fetchAdminData();
+  const handleToggleVerify = async (sellerId: string, currentStatus: boolean) => {
+    try {
+      await axios.put(`http://localhost:5000/api/admin/sellers/${sellerId}/verify`, {
+        verifiedStatus: !currentStatus
+      }, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      alert(`Boutique verification status updated successfully!`);
+      fetchAdminData();
+    } catch (err: any) {
+      alert(err.response?.data?.message || 'Failed to toggle verification status');
+    }
   };
 
   return (
@@ -67,12 +73,12 @@ export const AdminDashboard: React.FC = () => {
       <div className="max-w-6xl mx-auto space-y-8">
         
         {/* Header Banner */}
-        <div className="bg-[#2E1F16] text-[#F5F1EB] p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6 shadow-lg border border-[#8B5E3C]/20">
+        <div className="bg-[#2E1F16] text-[#F5F1EB] p-8 rounded-2xl flex flex-col lg:flex-row justify-between items-center gap-6 shadow-lg border border-[#8B5E3C]/20">
           <div>
             <h1 className="font-poppins text-2xl font-bold tracking-wide">Platform Administrator Panel</h1>
             <p className="font-inter text-sm text-[#F5F1EB]/70 mt-1">Audit registries, toggle seller verification tokens, and inspect global order queues.</p>
           </div>
-          <div className="flex gap-2">
+          <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setActiveTab('users')}
               className={`py-2 px-4 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-all ${
@@ -88,6 +94,14 @@ export const AdminDashboard: React.FC = () => {
               }`}
             >
               <Store className="h-4 w-4" /> Sellers
+            </button>
+            <button
+              onClick={() => setActiveTab('measurements')}
+              className={`py-2 px-4 rounded-xl text-sm font-semibold flex items-center gap-1.5 transition-all ${
+                activeTab === 'measurements' ? 'bg-[#8B5E3C] text-white' : 'bg-white/10 hover:bg-white/20 text-white'
+              }`}
+            >
+              <Ruler className="h-4 w-4" /> Sizing Data
             </button>
             <button
               onClick={() => setActiveTab('products')}
@@ -149,20 +163,70 @@ export const AdminDashboard: React.FC = () => {
                         <div key={s._id} className="py-3 flex justify-between items-center">
                           <div>
                             <p className="font-poppins text-sm font-semibold text-[#2E1F16]">{s.storeName}</p>
-                            <p className="text-xs text-gray-500">{s.description || 'No description provided'}</p>
+                            <p className="text-xs text-gray-500">
+                              Owner Email: {s.userId?.email || 'N/A'} | Rating: {s.rating}
+                            </p>
                           </div>
                           <button
                             onClick={() => handleToggleVerify(s._id, s.verifiedStatus)}
                             className={`px-3 py-1 text-xs font-bold rounded-lg border transition-all ${
                               s.verifiedStatus 
-                                ? 'bg-green-50 border-green-200 text-green-700' 
-                                : 'bg-amber-50 border-amber-200 text-amber-700 hover:bg-green-50 hover:text-green-700'
+                                ? 'bg-green-50 border-green-200 text-green-700 hover:bg-amber-50 hover:text-amber-700 hover:border-amber-200' 
+                                : 'bg-amber-50 border-amber-200 text-amber-700 hover:bg-green-50 hover:text-green-700 hover:border-green-200'
                             }`}
                           >
-                            {s.verifiedStatus ? 'Verified Boutique' : 'Verify Account'}
+                            {s.verifiedStatus ? 'Revoke Verification' : 'Verify Account'}
                           </button>
                         </div>
                       ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {activeTab === 'measurements' && (
+                <div className="space-y-4">
+                  <h3 className="font-poppins text-lg font-bold border-b border-[#F5F1EB] pb-3">Sizing Metrics & Recommendations</h3>
+                  {measurements.length === 0 ? (
+                    <p className="text-sm text-gray-500">No user measurements submitted yet.</p>
+                  ) : (
+                    <div className="overflow-x-auto">
+                      <table className="min-w-full divide-y divide-[#F5F1EB] text-left text-sm text-[#2E1F16]">
+                        <thead>
+                          <tr className="bg-[#F5F1EB]/50 font-poppins font-bold">
+                            <th className="p-3">User</th>
+                            <th className="p-3">Dimensions (H/W)</th>
+                            <th className="p-3">Sizing Inputs (Chest/Waist/Hips)</th>
+                            <th className="p-3">Fit Preference</th>
+                            <th className="p-3">AI Recommendation</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-[#F5F1EB]">
+                          {measurements.map((m: any) => (
+                            <tr key={m._id} className="hover:bg-[#F5F1EB]/20">
+                              <td className="p-3">
+                                <p className="font-semibold">{m.userId?.name || 'Unknown'}</p>
+                                <p className="text-xs text-gray-500">{m.userId?.email || 'N/A'}</p>
+                              </td>
+                              <td className="p-3">
+                                {m.height} cm / {m.weight} kg
+                              </td>
+                              <td className="p-3 text-xs">
+                                Chest: {m.chest} in | Waist: {m.waist} in | Hips: {m.hips} in
+                              </td>
+                              <td className="p-3 capitalize">
+                                {m.fitPreference} ({m.fabricStretch} stretch)
+                              </td>
+                              <td className="p-3">
+                                <span className="font-bold text-[#8B5E3C] bg-[#8B5E3C]/10 px-2 py-0.5 rounded mr-2">
+                                  Size {m.recommendedSize || 'N/A'}
+                                </span>
+                                <span className="text-xs text-gray-500">({m.fitScore}% Fit)</span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
                     </div>
                   )}
                 </div>
@@ -181,7 +245,7 @@ export const AdminDashboard: React.FC = () => {
                             <img src={p.images[0]} alt="" className="w-10 h-12 object-cover bg-gray-50 rounded" />
                             <div>
                               <p className="font-poppins text-sm font-semibold text-[#2E1F16]">{p.name}</p>
-                              <p className="text-xs text-gray-400">Category: {p.category}</p>
+                              <p className="text-xs text-gray-400">Category: {p.category} | Boutique: {p.sellerId?.storeName || 'Unknown'}</p>
                             </div>
                           </div>
                           <span className="font-poppins font-bold text-sm text-[#8B5E3C]">${p.price}</span>

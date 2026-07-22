@@ -40,7 +40,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onAddToCart, 
         className="relative overflow-hidden aspect-[4/5] bg-[#F5F1EB] cursor-pointer"
       >
         <img 
-          src={product.images && product.images.length > 0 ? product.images[0] : 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=60'} 
+          src={product.images && product.images.length > 0 ? product.images[0] : 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=60'} 
           alt={product.name}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
         />

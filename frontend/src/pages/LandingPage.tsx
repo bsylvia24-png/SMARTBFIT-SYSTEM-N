@@ -117,8 +117,13 @@ export const LandingPage: React.FC = () => {
                 </div>
 
                 <div className="my-auto flex flex-col items-center justify-center py-8 z-10">
-                  <div className="relative w-48 h-64 border border-[#C4A484]/20 rounded-2xl flex items-center justify-center bg-[#F5F1EB]/5">
-                    <Shirt className="h-32 w-32 text-[#C4A484]/40" />
+                  <div className="relative w-48 h-64 border border-[#C4A484]/20 rounded-2xl flex items-center justify-center bg-[#F5F1EB]/5 overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&auto=format&fit=crop&q=80" 
+                      alt="African Fashion Model" 
+                      className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2E1F16] via-transparent to-transparent"></div>
                     {/* Simulated laser scan bounding boxes */}
                     <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#C4A484]"></div>
                     <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#C4A484]"></div>

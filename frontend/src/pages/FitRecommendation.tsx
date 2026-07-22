@@ -63,59 +63,57 @@ export const FitRecommendation: React.FC = () => {
     }
   };
 
-  const calculateRecommendation = () => {
-    setLoading(true);
-    setSaveSuccess(false);
-
-    setTimeout(() => {
-      const c = Number(chest);
-
-      let size = 'M';
-      if (c < 36) size = 'S';
-      else if (c >= 36 && c < 39) size = 'M';
-      else if (c >= 39 && c < 42) size = 'L';
-      else if (c >= 42 && c < 45) size = 'XL';
-      else if (c >= 45) size = 'XXL';
-
-      // Fit score variance based on preference
-      let score = 94;
-      if (fitPreference === 'slim') score = 97;
-      else if (fitPreference === 'loose') score = 92;
-
-      setRecommendedSize(size);
-      setRecommendedFitScore(score);
-      setLoading(false);
-    }, 800);
-  };
-
-  const handleSave = async () => {
+  const calculateRecommendation = async () => {
     if (!isAuthenticated) {
-      setError('Please log in or register to save your measurements.');
+      setError('Please log in or register to calculate and save your measurements.');
       return;
     }
+
+    const h = Number(height);
+    const w = Number(weight);
+    const c = Number(chest);
+    const wa = Number(waist);
+    const hi = Number(hips);
+    const ins = Number(inseam);
+
+    if (!h || h <= 0 || !w || w <= 0 || !c || c <= 0 || !wa || wa <= 0 || !hi || hi <= 0 || !ins || ins <= 0) {
+      setError('Please provide valid positive values for all measurements.');
+      return;
+    }
+
     setError('');
+    setSaveSuccess(false);
     setLoading(true);
 
     try {
-      await axios.post('http://localhost:5000/api/measurements', {
-        height: Number(height),
-        weight: Number(weight),
-        chest: Number(chest),
-        waist: Number(waist),
-        hips: Number(hips),
-        inseam: Number(inseam),
+      const res = await axios.post('http://localhost:5000/api/measurements', {
+        height: h,
+        weight: w,
+        chest: c,
+        waist: wa,
+        hips: hi,
+        inseam: ins,
         gender,
         fitPreference,
         fabricStretch
       }, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setSaveSuccess(true);
+
+      if (res.data) {
+        setRecommendedSize(res.data.recommendedSize || 'M');
+        setRecommendedFitScore(res.data.fitScore || 94);
+        setSaveSuccess(true);
+      }
     } catch (err: any) {
-      setError(err.response?.data?.message || 'Failed to save measurements.');
+      setError(err.response?.data?.message || 'Failed to calculate size recommendation.');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSave = async () => {
+    await calculateRecommendation();
   };
 
   return (

@@ -62,7 +62,7 @@ export const SellerDashboard: React.FC = () => {
       measurements: { chest: 38, waist: 32 }
     }));
     const colors = colorsInput.split(',').map(c => c.trim());
-    const images = [imageUrl || 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&auto=format&fit=crop&q=60'];
+    const images = [imageUrl || 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=600&auto=format&fit=crop&q=60'];
 
     const payload = { name, description, price: Number(price), category, stock: Number(stock), images, sizes, colors };
 

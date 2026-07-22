@@ -11,6 +11,8 @@ const MeasurementSchema = new mongoose.Schema({
   gender: { type: String, enum: ['male', 'female'], required: true },
   fitPreference: { type: String, enum: ['tight', 'regular', 'loose'], default: 'regular' },
   fabricStretch: { type: String, enum: ['none', 'low', 'medium', 'high'], default: 'medium' },
+  recommendedSize: { type: String, default: '' },
+  fitScore: { type: Number, default: 0 },
   updatedAt: { type: Date, default: Date.now }
 });
 
